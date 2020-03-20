@@ -92,6 +92,7 @@ A geocoder component using the [Mapbox Geocoding API][55]
     -   `options.language` **[string][57]?** Specify the language to use for response text and query result weighting. Options are IETF language tags comprised of a mandatory ISO 639-1 language code and optionally one or more IETF subtags for country or script. More than one value can also be specified, separated by commas. Defaults to the browser's language settings.
     -   `options.filter` **[Function][66]?** A function which accepts a Feature in the [Carmen GeoJSON][67] format to filter out results from the Geocoding API response before they are included in the suggestions list. Return `true` to keep the item, `false` otherwise.
     -   `options.localGeocoder` **[Function][66]?** A function accepting the query string which performs local geocoding to supplement results from the Mapbox Geocoding API. Expected to return an Array of GeoJSON Features in the [Carmen GeoJSON][67] format.
+    -   `options.externalGeocoder` **[Function][66]?** A function like localGeocoder option but asynchronous, return a Promise results with GeoJson array
     -   `options.reverseMode` **(distance | score)** Set the factors that are used to sort nearby results. (optional, default `distance`)
     -   `options.reverseGeocode` **[boolean][61]** If `true`, enable reverse geocoding mode. In reverse geocoding, search input is expected to be coordinates in the form `lat, lon`, with suggestions being the reverse geocodes. (optional, default `false`)
     -   `options.enableEventLogging` **[Boolean][61]** Allow Mapbox to collect anonymous usage statistics from the plugin. (optional, default `true`)
@@ -100,6 +101,7 @@ A geocoder component using the [Mapbox Geocoding API][55]
     -   `options.getItemValue` **[Function][66]?** A function that specifies how the selected result should be rendered in the search bar. This function should accept a single [Carmen GeoJSON][67] object as input and return a string. HTML tags in the output string will not be rendered. Defaults to `(item) => item.place_name`.
     -   `options.mode` **[String][57]** A string specifying the geocoding [endpoint][68] to query. Options are `mapbox.places` and `mapbox.places-permanent`. The `mapbox.places-permanent` mode requires an enterprise license for permanent geocodes. (optional, default `mapbox.places`)
     -   `options.localGeocoderOnly` **[Boolean][61]** If `true`, indicates that the `localGeocoder` results should be the only ones returned to the user. If `false`, indicates that the `localGeocoder` results should be combined with those from the Mapbox API with the `localGeocoder` results ranked higher. (optional, default `false`)
+    -   `options.externalGeocoderOnly` **[Boolean][61]** same as `localGeocoderOnly` (optional, default `false`)
 
 ### Examples
 
